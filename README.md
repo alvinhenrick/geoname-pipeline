@@ -3,10 +3,15 @@
 
 ## Prerequisite
 JAVA Version 1.8
+
 SBT Version 1.1.5
+
 SCALA Version 2.11.12
+
 SPARK Version 2.2.1
+
 SOLR Version 7.2.1
+
 SPARK Solr Connector Version 3.4.0
 
 ## Description
