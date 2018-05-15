@@ -17,8 +17,8 @@ SPARK Solr Connector Version 3.4.0
 ## Description
 1. The purpose of this project is to do the POC to ingest and index data for easy search.
 2. It has support for geo spatial search [SpatialSearch] **nearest neighbors** or **full-text by name**.
-3. Apache Spark is used for distributed in memory compute , transform and ingest to build the pipeline.
-4. Apache Solr can be configured in cloud mode (Multiple Solr server servers) can be easily scaled up by increasing server nodes.
+3. [Apache Spark] is used for distributed in memory compute , transform and ingest to build the pipeline.
+4. [Apache Solr] can be configured in cloud mode (Multiple Solr server servers) can be easily scaled up by increasing server nodes.
 5. The collection can be configured with **shards (no of partitions)** and **replicas (fault tolerance)**
 6. The requirement to handle schema evolution can be done by Solr [Managed Schema Configuration]
 7. The `id` attribute which is derived from `geonameid` will take care of updating the collection for future updates and schema evolution as describe above.
@@ -27,7 +27,7 @@ SPARK Solr Connector Version 3.4.0
 
 
 ## Setup
-1. Download the specified Apache Solr Version mentioned in prerequisite section.
+1. [Download](http://archive.apache.org/dist/lucene/solr/7.2.1/) the specified Apache Solr Version mentioned in prerequisite section.
 2. Unzip the folder and copy it to some location on the disk.
 3. Change to Solr Home Directory
     ```bash
@@ -126,6 +126,9 @@ SPARK Solr Connector Version 3.4.0
 
 **NOTE**: Considering its a POC I am ignoring shape file which can be easily ingested into Solr document as is Binary form or converted to GeoJSON.
 
+
+[Apache Spark]: https://spark.apache.org/
+[Apache Solr]: http://lucene.apache.org/solr/
 [Managed Schema Configuration]:https://lucene.apache.org/solr/guide/7_2/schema-factory-definition-in-solrconfig.html#solr-uses-managed-schema-by-default
 [SpatialSearch]: https://lucene.apache.org/solr/guide/7_2/spatial-search.html#SpatialSearch-RPT
 [Binary Data Store]: https://lucene.apache.org/solr/guide/6_6/field-types-included-with-solr.html
