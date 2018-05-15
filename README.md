@@ -1,5 +1,6 @@
 ## Geo names ingest pipeline
 
+[Click Here](https://alvinhenrick.github.io/geoname-pipeline-revealjs/) to access the presentation.
 
 ## Prerequisite
 JAVA Version 1.8
