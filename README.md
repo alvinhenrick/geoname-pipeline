@@ -18,7 +18,7 @@ SPARK Solr Connector Version 3.4.0
 1. The purpose of this project is to do the POC to ingest and index data for easy search.
 2. It has support for geo spatial search [SpatialSearch] **nearest neighbors** or **full-text by name**.
 3. [Apache Spark] is used for distributed in memory compute , transform and ingest to build the pipeline.
-4. [Apache Solr] can be configured in cloud mode (Multiple Solr server servers) can be easily scaled up by increasing server nodes.
+4. [Apache Solr] is used for storage and indexing can be configured in cloud mode (Multiple Solr server servers) can be easily scaled up by increasing server nodes.
 5. The collection can be configured with **shards (no of partitions)** and **replicas (fault tolerance)**
 6. The requirement to handle schema evolution can be done by Solr [Managed Schema Configuration]
 7. The `id` attribute which is derived from `geonameid` will take care of updating the collection for future updates and schema evolution as describe above.
