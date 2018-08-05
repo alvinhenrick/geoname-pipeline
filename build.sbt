@@ -4,15 +4,15 @@ version := "0.1"
 
 scalaVersion := "2.11.12"
 
-val sparkVersion = "2.2.1"
+val sparkVersion = "2.3.1"
 val scoptVersion = "3.3.0"
 
 resolvers += "Restlet Repository" at "http://maven.restlet.org"
 
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core" % sparkVersion,
-  "org.apache.spark" %% "spark-sql" % sparkVersion,
-  "com.lucidworks.spark" % "spark-solr" % "3.4.0",
+  "org.apache.spark" %% "spark-core" % sparkVersion % Provided,
+  "org.apache.spark" %% "spark-sql" % sparkVersion % Provided,
+  "com.lucidworks.spark" % "spark-solr" % "3.5.1",
   "com.holdenkarau" %% "spark-testing-base" % "2.2.1_0.9.0" % Test
 )
 
@@ -55,13 +55,18 @@ assemblyMergeStrategy in assembly := {
   case PathList("javax", "servlet", xs@_*) => MergeStrategy.last
   case PathList("javax", "activation", xs@_*) => MergeStrategy.last
   case PathList("javax", "xml", xs@_*) => MergeStrategy.last
+  case PathList("javax", "ws", xs@_*) => MergeStrategy.last
   case PathList("org", "apache", xs@_*) => MergeStrategy.last
   case PathList("org", "objenesis", xs@_*) => MergeStrategy.last
+  case PathList("org", "objectweb", xs@_*) => MergeStrategy.last
   case PathList("com", "google", xs@_*) => MergeStrategy.last
   case PathList("com", "esotericsoftware", xs@_*) => MergeStrategy.last
   case PathList("com", "codahale", xs@_*) => MergeStrategy.last
   case PathList("com", "yammer", xs@_*) => MergeStrategy.last
   case PathList("com", "twitter", xs@_*) => MergeStrategy.last
+  case PathList("com", "glassfish", xs@_*) => MergeStrategy.last
+  case PathList("com", "sun", xs@_*) => MergeStrategy.last
+
   case "META-INF/ECLIPSEF.RSA" => MergeStrategy.last
   case "META-INF/mailcap" => MergeStrategy.last
   case "META-INF/mimetypes.default" => MergeStrategy.last
@@ -70,6 +75,8 @@ assemblyMergeStrategy in assembly := {
   case "log4j.properties" => MergeStrategy.last
   case "plugin.xml" => MergeStrategy.last
   case "parquet.thrift" => MergeStrategy.last
+  case "codegen/config.fmpp" => MergeStrategy.discard
+  case "git.properties" => MergeStrategy.last
   case "about.html" => MergeStrategy.discard
   case "overview.html" => MergeStrategy.discard
   case x =>

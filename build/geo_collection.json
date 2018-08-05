@@ -1,0 +1,60 @@
+{
+  "add-field": [
+    {
+      "name": "administrativeLevel1",
+      "type": "string",
+      "docValues": true,
+      "multiValued": false,
+      "indexed": true,
+      "stored": true
+    },
+    {
+      "name": "administrativeLevel2",
+      "type": "string",
+      "docValues": true,
+      "multiValued": false,
+      "indexed": true,
+      "stored": true
+    },
+    {
+      "name": "countryCode",
+      "type": "string",
+      "docValues": true,
+      "multiValued": false,
+      "indexed": true,
+      "stored": true
+    },
+    {
+      "name": "latitude",
+      "type": "pfloat",
+      "docValues": true,
+      "multiValued": false,
+      "indexed": true,
+      "stored": true
+    },
+    {
+      "name": "location",
+      "type": "location",
+      "docValues": true,
+      "multiValued": false,
+      "indexed": true,
+      "stored": true
+    },
+    {
+      "name": "longitude",
+      "type": "pfloat",
+      "docValues": true,
+      "multiValued": false,
+      "indexed": true,
+      "stored": true
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "docValues": true,
+      "multiValued": false,
+      "indexed": true,
+      "stored": true
+    }
+  ]
+}

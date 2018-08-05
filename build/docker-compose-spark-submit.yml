@@ -1,0 +1,14 @@
+version: "3"
+services:
+  geo-pipeline:
+    build:
+      context: ..
+      dockerfile: build/Dockerfile
+    networks:
+    - geo-net
+    volumes:
+    - ./data:/app/data
+networks:
+  geo-net:
+    external:
+      name: geo-net

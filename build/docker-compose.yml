@@ -1,0 +1,49 @@
+version: "3"
+
+services:
+  solr:
+    image: solr:7.3.1
+    container_name: solr
+    hostname: solr
+    networks:
+    - geo-net
+    ports:
+    - "9983:9983"
+    - "8983:8983"
+    entrypoint:
+    - docker-entrypoint.sh
+    - solr
+    - start
+    - -c
+    - -f
+  spark-master:
+    image: bde2020/spark-master:2.3.1-hadoop2.7
+    container_name: spark-master
+    hostname: spark-master
+    networks:
+    - geo-net
+    ports:
+    - "8080:8080"
+    - "7077:7077"
+    environment:
+    - INIT_DAEMON_STEP=setup_spark
+    volumes:
+    - ./data:/app/data
+  spark-worker-1:
+    image: bde2020/spark-worker:2.3.1-hadoop2.7
+    container_name: spark-worker-1
+    hostname: spark-worker-1
+    networks:
+    - geo-net
+    depends_on:
+    - spark-master
+    ports:
+    - "8081:8081"
+    environment:
+    - "SPARK_MASTER=spark://spark-master:7077"
+    volumes:
+    - ./data:/app/data
+networks:
+  geo-net:
+    external:
+      name: geo-net

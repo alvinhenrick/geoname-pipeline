@@ -75,7 +75,7 @@ object IndexGeoData {
     // 2. Amazon cloud watch agent
 
     val options =
-      Map("zkhost" -> "localhost:9983", "collection" -> "test_collect_2")
+      Map("zkhost" -> "solr:9983", "collection" -> "geo_collection")
 
     //Index to Solr for Query and Search
     //primerDF.show()

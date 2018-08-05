@@ -9,9 +9,9 @@ SBT Version 1.1.5
 
 SCALA Version 2.11.12
 
-SPARK Version 2.2.1
+SPARK Version 2.3.1
 
-SOLR Version 7.2.1
+SOLR Version 7.3.1
 
 SPARK Solr Connector Version 3.4.0
 
@@ -28,11 +28,11 @@ SPARK Solr Connector Version 3.4.0
 
 
 ## Setup
-1. [Download](http://archive.apache.org/dist/lucene/solr/7.2.1/) the specified Apache Solr Version mentioned in prerequisite section.
+1. [Download](http://archive.apache.org/dist/lucene/solr/7.3.1/) the specified Apache Solr Version mentioned in prerequisite section.
 2. Unzip the folder and copy it to some location on the disk.
 3. Change to Solr Home Directory
     ```bash
-       cd solr-7.2.1 
+       cd solr-7.3.1 
     ```
 4. Start Solr Server in cloud mode
     ```bash
@@ -40,7 +40,7 @@ SPARK Solr Connector Version 3.4.0
     ```
 5. Create collection for storage and indexing
     ```bash
-       bin/solr create -c test_collect_2
+       bin/solr create -c geo_collection
     ```
 6. Create schema
     ```bash
@@ -96,7 +96,7 @@ SPARK Solr Connector Version 3.4.0
              "indexed":true,
              "stored":true
              }]
-       }' http://localhost:8983/solr/test_collect_2/schema
+       }' http://localhost:8983/solr/geo_collection/schema
     ```
 
 7. Build the project
@@ -114,15 +114,15 @@ SPARK Solr Connector Version 3.4.0
     ```
 9. Search By Name
    ```bash
-       curl "http://localhost:8983/solr/test_collect_2/select?q=name:Saint-*"
+       curl "http://localhost:8983/solr/geo_collection/select?q=name:Saint-*"
    ```
 10. Search Nearest Neighbors By Great Circle Distance Box **geofilt** and Filter By Radius 10.
     ```bash
-       curl "http://localhost:8983/solr/test_collect_2/select?d=10&fq=\{!geofilt%20sfield=location\}&pt=47.10247,5.26556&q=*:*&sfield=location"
+       curl "http://localhost:8983/solr/geo_collection/select?d=10&fq=\{!geofilt%20sfield=location\}&pt=47.10247,5.26556&q=*:*&sfield=location"
      ```
 12. Search Nearest Neighbors By Bounding Box Distance **bbox** and Filter By Radius 5.
     ```bash
-       curl "http://localhost:8983/solr/test_collect_2/select?d=5&fq=\{\!bbox%20sfield=location\}&pt=47.10247,5.26556&q=*:*&sfield=location"
+       curl "http://localhost:8983/solr/geo_collection/select?d=5&fq=\{\!bbox%20sfield=location\}&pt=47.10247,5.26556&q=*:*&sfield=location"
      ```
 
 **NOTE**: Considering its a POC I am ignoring shape file which can be easily ingested into Solr document as is Binary form or converted to GeoJSON.
